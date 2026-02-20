@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FreshFusion | Premium Juice Bar</title>
-    <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍹</text></svg>">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🍹%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -38,13 +38,14 @@
         <!-- Home Section -->
         <section class="hero" id="home">
             <div class="hero-inner">
-                <h1>DRINK<br><span>FUSION.</span></h1>
-                <p>Premium cold-pressed juice blends for the ultimate wellness lifestyle.</p>
-                <div style="display:flex; gap:1.5rem; justify-content:center;">
-                    <a href="#menu" class="add-btn" style="text-decoration:none;">Explore Menu</a>
-                    <a href="#offers"
-                        style="background:none; border:2px solid #fff; color:#fff; text-decoration:none; padding:1rem 2rem; border-radius:12px; font-weight:800; transition: 0.3s; display:inline-block;">View
-                        Deals</a>
+                <h1>
+                    <span class="fresh-text">Fresh Juices</span>
+                    <span class="amp-line">&</span>
+                    <span class="smoothies-text">Smoothies</span>
+                </h1>
+                <div class="hero-btns">
+                    <a href="#menu" class="hero-btn btn-green">Explore Menu</a>
+                    <a href="#offers" class="hero-btn btn-orange">View Deals</a>
                 </div>
             </div>
         </section>
@@ -53,8 +54,17 @@
         <section id="menu">
             <div class="container">
                 <div class="section-title">
-                    <h2>The <span>Menu</span></h2>
-                    <div class="line"></div>
+                    <h2><span class="title-script">Refresh</span> <span class="title-bold">Menu</span> 🥤</h2>
+                </div>
+
+                <div class="menu-action-bar">
+                    <div class="search-container active" id="searchContainer">
+                        <div class="search-box">
+                            <i data-lucide="search" class="search-icon-static"></i>
+                            <input type="text" id="menuSearch" placeholder="Search for juices...">
+                            <button id="clearSearch" style="display:none;"><i data-lucide="x"></i></button>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="filters">
@@ -72,25 +82,26 @@
         <section id="offers">
             <div class="container">
                 <div class="section-title">
-                    <h2>Live <span class="juice">Offers</span> 🔥</h2>
-                    <div class="line"></div>
+                    <h2><span class="title-script">Live</span> <span class="title-bold">Offers</span> 🔥</h2>
                 </div>
                 <div class="offers-grid">
-                    <div class="offer-card">
+                    <div class="offer-card offer-green">
                         <div class="offer-badge">HOT DEAL</div>
                         <h3>Summer Refresh</h3>
                         <p>Enjoy 20% OFF on all fresh citrus juices!</p>
-                        <div style="font-weight:900; font-size:1.2rem; margin-bottom:1rem; color:var(--primary);">CODE:
-                            SUMMER20</div>
-                        <button class="add-btn" style="width:100%;">USE COUPON</button>
+                        <div
+                            style="font-weight:900; font-size:1.4rem; margin-bottom:1.5rem; color:#1b4d3e; font-family:'Fredoka', sans-serif;">
+                            CODE: SUMMER20</div>
+                        <button class="hero-btn btn-green" style="width:100%;">USE COUPON</button>
                     </div>
-                    <div class="offer-card" style="background:var(--primary); color:black; border-color:black;">
-                        <div class="offer-badge" style="background:black; color:var(--primary);">BUNDLE</div>
+                    <div class="offer-card offer-orange">
+                        <div class="offer-badge">BUNDLE</div>
                         <h3>The Family Pack</h3>
                         <p>Mix any 4 jumbo juices at flat ₹250 price.</p>
-                        <div style="font-weight:900; font-size:1.2rem; margin-bottom:1rem;">AUTOMATIC DISCOUNT</div>
-                        <button class="add-btn" style="width:100%; background:black; color:var(--primary);">GRAB
-                            NOW</button>
+                        <div
+                            style="font-weight:900; font-size:1.4rem; margin-bottom:1.5rem; color:#f97316; font-family:'Fredoka', sans-serif;">
+                            AUTOMATIC DISCOUNT</div>
+                        <button class="hero-btn btn-orange" style="width:100%;">GRAB NOW</button>
                     </div>
                 </div>
             </div>
@@ -100,8 +111,7 @@
         <section id="profile">
             <div class="container">
                 <div class="section-title">
-                    <h2>User <span>Profile</span></h2>
-                    <div class="line"></div>
+                    <h2><span class="title-script">User</span> <span class="title-bold">Profile</span></h2>
                 </div>
                 <div class="profile-card">
                     <div class="profile-avatar">
@@ -152,11 +162,18 @@
 
         <div class="promo-box"
             style="padding:1rem; background:#f9f9f9; border-radius:15px; margin-top:1rem; border:1px solid #ddd;">
-            <input type="text" id="promoCode" placeholder="Enter SUMMER20"
+            <input type="text" id="promoCode" placeholder="Enter promo code"
                 style="width:100%; padding:12px; border-radius:8px; border:1px solid #ddd; margin-bottom:10px; font-weight:700;">
             <button id="applyPromo"
                 style="width:100%; background:#000; color:var(--primary); border:none; padding:12px; border-radius:8px; font-weight:800; cursor:pointer;">APPLY</button>
             <p id="promoStatus" style="font-size:0.75rem; margin-top:5px; text-align:center;"></p>
+
+            <div id="availableCoupons" style="margin-top: 1rem;">
+                <p
+                    style="font-size: 0.75rem; font-weight: 800; color: #666; margin-bottom: 0.5rem; text-transform: uppercase;">
+                    Available Coupons</p>
+                <div id="couponsList" style="display: flex; flex-wrap: wrap; gap: 8px;"></div>
+            </div>
         </div>
 
         <div style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px dashed #ccc;">
@@ -168,27 +185,25 @@
             </div>
             <div style="display:flex; justify-content:space-between; font-weight:900; font-size:1.8rem;"><span>Grand
                     Total</span><span id="totalAmount">₹0</span></div>
-            <button class="add-btn" id="checkoutBtn"
-                style="width:100%; margin-top:1.5rem; border-radius:15px; height:65px; font-size:1.2rem;">GENERATE
-                BILL</button>
+            <button class="add-btn cart-checkout-btn" id="checkoutBtn">GENERATE BILL</button>
         </div>
     </div>
 
     <!-- Final Bill Modal -->
-    <div class="modal-overlay" id="successModal"
-        style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); display:none; justify-content:center; align-items:center; z-index:3000; padding:1.5rem;">
-        <div class="modal"
-            style="background:#fff; width:100%; max-width:450px; border-radius:30px; padding:2.5rem; border:4px solid var(--black);">
-            <div style="text-align:center; border-bottom:4px solid #000; padding-bottom:1.5rem; margin-bottom:1.5rem;">
-                <h1 style="font-weight:900; letter-spacing:-1px;">INVOICE</h1>
+    <div class="modal-overlay" id="successModal">
+        <div class="modal invoice-modal">
+            <div class="invoice-header">
+                <h1>INVOICE</h1>
                 <p>#FF-<span id="invoiceId">0000</span></p>
             </div>
-            <div id="finalBillItems" style="margin:1.5rem 0;"></div>
-            <div style="border-top:1px solid #eee; padding-top:1.5rem;">
-                <div style="display:flex; justify-content:space-between; font-weight:900; font-size:1.6rem;"><span>TOTAL
-                        PAID</span><span id="finalGrandTotal">₹0</span></div>
+            <div id="finalBillItems" class="invoice-items"></div>
+            <div class="invoice-footer">
+                <div class="total-row">
+                    <span>TOTAL PAID</span>
+                    <span id="finalGrandTotal">₹0</span>
+                </div>
             </div>
-            <button id="closeModal" class="add-btn" style="width:100%; margin-top:2rem;">RECEIPT DOWNLOADED</button>
+            <button id="closeModal" class="add-btn close-modal-btn">RECEIPT DOWNLOADED</button>
         </div>
     </div>
 

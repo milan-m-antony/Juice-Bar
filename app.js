@@ -126,42 +126,42 @@ const MENU_ITEMS = [
         image: "assets/tender-coconut.jpg",
         tags: ["🌿 100% Natural", "Daily Fresh"]
     },
-    {
-        id: 22, name: "Chocolate Banana Smoothie", category: "Smoothies", price: 120,
-        description: "Creamy banana cocoa blend.",
-        image: "assets/choc-banana.jpg",
-        tags: ["🥭 Customer Favorite", "Daily Fresh"]
-    },
-    {
-        id: 23, name: "Peanut Butter Smoothie", category: "Smoothies", price: 140,
-        description: "Protein-packed creamy delight.",
-        image: "assets/peanut-butter.jpg",
-        tags: ["🥭 Premium Quality", "Made to Order"]
-    },
-    {
-        id: 24, name: "Avocado Smoothie", category: "Smoothies", price: 150,
-        description: "Healthy creamy superfruit mix.",
-        image: "assets/avocado.jpg",
-        tags: ["⭐ Best Seller", "🥭 Premium Quality"]
-    },
-    {
-        id: 25, name: "Ginger Lemon Shot", category: "Detox & Health", price: 40,
-        description: "Immunity booster shot.",
-        image: "assets/ginger-shot.jpg",
-        tags: ["🌿 Healthy Choice", "Daily Fresh"]
-    },
-    {
-        id: 26, name: "Spinach Apple Detox", category: "Detox & Health", price: 130,
-        description: "Green fiber energy drink.",
-        image: "assets/spinach-apple.jpg",
-        tags: ["🌿 Healthy Choice", "No Added Sugar"]
-    },
-    {
-        id: 27, name: "Cucumber Mint Cooler", category: "Detox & Health", price: 70,
-        description: "Light and refreshing cleanse.",
-        image: "assets/cucumber-mint.jpg",
-        tags: ["🌿 Hydrating", "Freshly Made"]
-    },
+    // {
+    //     id: 22, name: "Chocolate Banana Smoothie", category: "Smoothies", price: 120,
+    //     description: "Creamy banana cocoa blend.",
+    //     image: "assets/choc-banana.jpg",
+    //     tags: ["🥭 Customer Favorite", "Daily Fresh"]
+    // },
+    // {
+    //     id: 23, name: "Peanut Butter Smoothie", category: "Smoothies", price: 140,
+    //     description: "Protein-packed creamy delight.",
+    //     image: "assets/peanut-butter.jpg",
+    //     tags: ["🥭 Premium Quality", "Made to Order"]
+    // },
+    // {
+    //     id: 24, name: "Avocado Smoothie", category: "Smoothies", price: 150,
+    //     description: "Healthy creamy superfruit mix.",
+    //     image: "assets/avocado.jpg",
+    //     tags: ["⭐ Best Seller", "🥭 Premium Quality"]
+    // },
+    // {
+    //     id: 25, name: "Ginger Lemon Shot", category: "Detox & Health", price: 40,
+    //     description: "Immunity booster shot.",
+    //     image: "assets/ginger-shot.jpg",
+    //     tags: ["🌿 Healthy Choice", "Daily Fresh"]
+    // },
+    // {
+    //     id: 26, name: "Spinach Apple Detox", category: "Detox & Health", price: 130,
+    //     description: "Green fiber energy drink.",
+    //     image: "assets/spinach-apple.jpg",
+    //     tags: ["🌿 Healthy Choice", "No Added Sugar"]
+    // },
+    // {
+    //     id: 27, name: "Cucumber Mint Cooler", category: "Detox & Health", price: 70,
+    //     description: "Light and refreshing cleanse.",
+    //     image: "assets/cucumber-mint.jpg",
+    //     tags: ["🌿 Hydrating", "Freshly Made"]
+    // },
     {
         id: 28, name: "Aloe Vera Honey Drink", category: "Detox & Health", price: 150,
         description: "Natural digestion support.",
@@ -175,6 +175,19 @@ let cart = [];
 let appliedPromo = "";
 let currentCategory = 'all';
 let lastScrollY = window.scrollY;
+
+const COUPONS = [
+    { code: "SUMMER20", desc: "20% OFF", color: "#facc15" },
+    { code: "BERRY10", desc: "10% OFF", color: "#ec4899" }
+];
+
+function applyCoupon(code) {
+    appliedPromo = code;
+    document.getElementById('promoCode').value = code;
+    document.getElementById('promoStatus').textContent = "Applied!";
+    document.getElementById('promoStatus').style.color = "green";
+    updateUI();
+}
 
 // DOM
 const menuGrid = document.getElementById('menuGrid');
@@ -196,9 +209,26 @@ const currencyFormatter = new Intl.NumberFormat('en-IN', {
 });
 
 // Render Menu
-function renderMenu() {
+function renderMenu(searchTerm = '') {
     menuGrid.innerHTML = '';
-    const filtered = currentCategory === 'all' ? MENU_ITEMS : MENU_ITEMS.filter(i => i.category === currentCategory);
+    let filtered = currentCategory === 'all' ? MENU_ITEMS : MENU_ITEMS.filter(i => i.category === currentCategory);
+
+    if (searchTerm) {
+        searchTerm = searchTerm.toLowerCase();
+        filtered = filtered.filter(item =>
+            item.name.toLowerCase().includes(searchTerm) ||
+            item.description.toLowerCase().includes(searchTerm) ||
+            item.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+        );
+    }
+
+    if (filtered.length === 0) {
+        menuGrid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: #666;">
+            <h3>No juices found for "${searchTerm}"</h3>
+            <p>Try searching for something else!</p>
+        </div>`;
+        return;
+    }
 
     filtered.forEach(item => {
         const card = document.createElement('div');
@@ -218,17 +248,37 @@ function renderMenu() {
             <div class="item-tags">${tagsHtml}</div>
             <h3 style="font-weight:700">${item.name}</h3>
             <p style="font-size:0.9rem; color:#666;">${item.description}</p>
-            <div style="margin-top:auto; display:flex; justify-content:space-between; align-items:center; padding-top:1rem;">
-                <span style="font-weight:800; font-size:1.4rem;">${currencyFormatter.format(item.price)}</span>
+            <div class="card-footer" style="margin-top:auto; display:flex; justify-content:space-between; align-items:center; padding-top:1rem;">
+                <span class="price-tag" style="font-weight:800; font-size:1.4rem;">${currencyFormatter.format(item.price)}</span>
                 <button class="add-btn" onclick="addToCart(${item.id})">ADD</button>
             </div>`;
         menuGrid.appendChild(card);
     });
 }
 
+// Search Logic
+const menuSearch = document.getElementById('menuSearch');
+const clearSearch = document.getElementById('clearSearch');
+const searchContainer = document.getElementById('searchContainer');
+
+menuSearch.addEventListener('input', (e) => {
+    const term = e.target.value.trim();
+    clearSearch.style.display = term ? 'flex' : 'none';
+    renderMenu(term); // Instant search while typing
+});
+
+clearSearch.addEventListener('click', () => {
+    menuSearch.value = '';
+    clearSearch.style.display = 'none';
+    renderMenu();
+});
+
+
 // UI Updates
 function updateUI() {
-    cartCount.textContent = cart.reduce((acc, i) => acc + i.quantity, 0);
+    const totalQty = cart.reduce((acc, i) => acc + i.quantity, 0);
+    cartCount.textContent = totalQty;
+
     cartItemsContainer.innerHTML = '';
     cart.forEach(item => {
         cartItemsContainer.innerHTML += `
@@ -253,6 +303,38 @@ function updateUI() {
     subtotalAmount.textContent = currencyFormatter.format(sub);
     discountAmount.textContent = `-${currencyFormatter.format(disc)}`;
     totalAmount.textContent = currencyFormatter.format(sub - disc);
+
+    // Render Available Coupons
+    const couponsContainer = document.getElementById('availableCoupons');
+    const couponsList = document.getElementById('couponsList');
+    if (couponsList) {
+        couponsList.innerHTML = '';
+        if (appliedPromo) {
+            couponsContainer.style.display = 'none';
+        } else {
+            couponsContainer.style.display = 'block';
+            COUPONS.forEach(coupon => {
+                const btn = document.createElement('button');
+                btn.className = 'coupon-pill';
+                btn.innerHTML = `<strong>${coupon.code}</strong> <span style="opacity:0.8; font-size:0.7rem;">(${coupon.desc})</span>`;
+                btn.style.cssText = `
+                    background: ${coupon.color}15;
+                    border: 1px solid ${coupon.color};
+                    color: ${coupon.color};
+                    padding: 8px 12px;
+                    border-radius: 8px;
+                    font-size: 0.75rem;
+                    cursor: pointer;
+                    transition: 0.2s;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                `;
+                btn.onclick = () => applyCoupon(coupon.code);
+                couponsList.appendChild(btn);
+            });
+        }
+    }
 }
 
 // Interactive Feedback
@@ -322,11 +404,12 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 
 document.getElementById('applyPromo').addEventListener('click', () => {
     const val = document.getElementById('promoCode').value.toUpperCase();
-    if (val === "SUMMER20" || val === "BERRY10") {
-        appliedPromo = val;
-        document.getElementById('promoStatus').textContent = "Applied!";
-        document.getElementById('promoStatus').style.color = "green";
-        updateUI();
+    const coupon = COUPONS.find(c => c.code === val);
+    if (coupon) {
+        applyCoupon(val);
+    } else {
+        document.getElementById('promoStatus').textContent = "Invalid Code";
+        document.getElementById('promoStatus').style.color = "red";
     }
 });
 
