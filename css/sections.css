@@ -167,13 +167,15 @@
 .profile-card {
     max-width: 600px;
     margin: 0 auto;
-    background: var(--white);
+    background: var(--bg-card);
+    color: var(--text-main);
     padding: 4rem;
     border-radius: var(--radius-xl);
-    border: 3px solid var(--black);
+    border: 3px solid var(--border-color);
     text-align: center;
     box-shadow: var(--shadow);
 }
+
 
 .profile-avatar {
     width: 100px;

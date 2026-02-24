@@ -9,8 +9,8 @@
 .search-box {
     display: flex;
     align-items: center;
-    background: #f8fafc;
-    border: 2px solid #e2e8f0;
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
     border-radius: 50px;
     height: 55px;
     padding: 0 15px;
@@ -104,10 +104,10 @@
 }
 
 .juice-card {
-    background: var(--white);
+    background: var(--bg-card);
     border-radius: var(--radius-lg);
     padding: 1.5rem;
-    border: 2px solid var(--gray-100);
+    border: 2px solid var(--border-color);
     transition: var(--transition);
     position: relative;
     display: flex;

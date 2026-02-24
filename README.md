@@ -5,16 +5,17 @@ Welcome to the official documentation for **FreshFusion Juice Bar**, a premium, 
 ---
 
 ## 🚀 Project Overview
-FreshFusion is a responsive, feature-rich web application built with a focus on **visual excellence**, **modular architecture**, and **seamless user experience**. It features a dynamic menu, real-time search, a robust cart system with discount logic, and a premium "Dark Glass" aesthetic.
+FreshFusion is a responsive, feature-rich web application built with a focus on **visual excellence**, **modular architecture**, and **seamless user experience**. It features a dynamic menu, real-time search, a robust cart system with multi-tier rewards, and a clean, premium aesthetic.
 
 ---
 
 ## 🛠️ Technology Stack
 *   **Structure**: Semantic HTML5
-*   **Styling**: Modular Vanilla CSS3 (Custom Variables & Grid/Flexbox)
+*   **Styling**: Modular Vanilla CSS3 (Custom Design System with CSS Variables)
 *   **Logic**: Modern JavaScript (ES6+ Modules)
-*   **Icons**: [Lucide Icons](https://lucide.dev/)
+*   **Icons**: [Lucide Icons](https://lucide.dev/) (Self-hosted for **Offline Support**)
 *   **Typography**: Google Fonts (Outfit, Pacifico, Fredoka)
+*   **Animations**: CSS Transitions & View Transitions API
 
 ---
 
@@ -22,68 +23,62 @@ FreshFusion is a responsive, feature-rich web application built with a focus on 
 The project follows a modular design pattern to ensure high scalability and easy maintenance.
 
 ### 🎨 Stylesheets (`/css`)
-*   `variables.css`: Defines the global design system (colors, spacing, shadows).
-*   `base.css`: Handes CSS resets, typography, and core section layouts.
-*   `layout.css`: Manages the branding header, navigation logic, and mobile bottom nav.
-*   `hero.css`: Styles the high-impact landing section.
-*   `menu.css`: Styles the juice grid, category filters, and interactive item cards.
-*   `cart.css`: Logic for the slide-out cart drawer and invoice modal.
-*   `sections.css`: Styles for secondary sections like Offers and User Profiles.
-*   `components.css`: Contains micro-animations, toasts, and reusable UI components.
-*   `responsive.css`: Consolidates all media queries for a perfect mobile-first experience.
+*   `variables.css`: The central design system. Defines colors, spacing, and semantic tokens.
+*   `base.css`: Core typography, layout container, and reset styles.
+*   `layout.css`: Manages the branding header and navigation (Desktop & Mobile).
+*   `hero.css`: Styles for the high-impact responsive landing section.
+*   `menu.css`: Juice grid system and interactive product card designs.
+*   `cart.css`: Optimized styles for the compact cart drawer and invoice modal.
+*   `sections.css`: Visuals for the Offers grid and User Profile sections.
+*   `components.css`: Shimmer effects, bouncy micro-animations, and toast notifications.
+*   `responsive.css`: Consolidates all media queries for a seamless multi-device experience.
 
 ### ⚙️ Logic (`/js`)
-*   `data.js`: Central source of truth for all menu items and coupon definitions.
-*   `state.js`: Manages the application's runtime state (cart contents, active category).
-*   `ui.js`: Handles DOM selection, toast notifications, and the primary UI rendering engine.
-*   `menu.js`: Logic for rendering the juice list, category switching, and real-time search.
-*   `cart.js`: Core cart functionality including quantity management and checkout logic.
-*   `navigation.js`: Handles scroll-based header behavior and the active-link scrollspy.
-*   `utils.js`: Helper utilities (e.g., Currency formatting).
-
-### 🚀 Entry Points
-*   `index.html`: The main structural entry point.
-*   `style.css`: The main CSS manifest that imports the modular stylesheets.
-*   `app.js`: The main JavaScript module that initializes and coordinates all features.
+*   `data.js`: Source of truth for menu items, descriptions, and active coupon definitions.
+*   `state.js`: Lightweight state manager for cart persistence and active filters.
+*   `ui.js`: The rendering engine. Handles DOM updates, rewards logic, and toasts.
+*   `menu.js`: Logic for dynamic juice rendering and real-time meta-tag search.
+*   `cart.js`: Core cart logic: quantities, subtotal calculations, and bill generation.
+*   `navigation.js`: Scroll-spy logic and smooth section transitions.
+*   `utils.js`: Helper utilities (e.g., dedicated Currency/Price formatters).
 
 ---
 
 ## ✨ Key Features
 
 ### 1. Dynamic Menu & Filtering
-*   Instant filtering by category (Fresh Juices, Smoothies, Detox).
-*   Real-time search bar that filters by name, description, and even hidden meta-tags.
+*   **Instant Filtering**: Switch between category views (Juices, Smoothies, Detox) instantly.
+*   **Smart Search**: Real-time search that matches names, descriptions, and hidden ingredient tags.
 
-### 2. Premium Cart System
-*   **Slide-out Drawer**: Accessible from the floating header or mobile bottom nav.
-*   **Live Updates**: Quantities and totals update instantly without page reloads.
-*   **Smart Discounts**: Automated 5% discount for orders over ₹500.
+### 2. Premium Cart & Rewards
+*   **Reward Progress**: Real-time progress bar that tracks spend towards a **Free Detox Shot** (Unlocked at ₹500).
+*   **Compact UI**: An optimized, vertically efficient checkout drawer that ensures the "Generate Bill" button is always accessible.
+*   **Live Totals**: Subtotal, discounts, and grand totals update instantly with smooth data-binding.
 
 ### 3. Coupon Economy
-*   **Click-to-Apply**: Available coupons (SUMMER20, BERRY10) are displayed as interactive "pills" inside the cart.
-*   **Validation**: Real-time validation for manually entered promo codes.
+*   **One-Tap Application**: Available coupons are displayed as interactive pills within the cart.
+*   **Manual Entry**: Robust validation for promo codes like `SUMMER20`, `BERRY10`, and `FRESH5`.
 
-### 4. Visual Excellence
-*   **Micro-animations**: Bounce effects on cart updates, smooth transitions on scroll.
-*   **Responsive Engine**: Tailored layouts for Desktop, Tablet, and Mobile.
-*   **Dark Glass Ethos**: A sophisticated color palette utilizing deep blacks, vibrant oranges, and primary yellows.
+### 4. High-End Performance
+*   **Offline Ready**: All critical assets, including the **Lucide Icon Library**, are hosted locally to ensure functionality without internet.
+*   **Micro-animations**: Subtle interactions (bouncy buttons, shimmer tags, peek-header) that elevate the user experience.
+*   **View Transitions**: Cinematic section transitions for a "Single Page App" feel.
 
 ---
 
-## 💻 Development & Deployment
-To run this project locally:
+## 💻 Running Locally
 1.  Clone the repository.
-2.  Open `index.html` using a local development server (like VS Code Live Server).
-3.  **Note**: Because this project uses **JavaScript Modules**, it must be run on a local server (http://localhost) rather than locally from a file path (file://) for the modules to load.
+2.  Open `index.html` using a local development server (e.g., **VS Code Live Server**).
+3.  **Note**: Because the project uses **ES6 Modules**, it must be run on a local server (`http://localhost`) rather than a file path (`file://`).
 
 ---
 
-## 🎨 Design Guide
-*   **Primary Color**: `#facc15` (Vibrant Yellow)
-*   **Accent Color**: `#f97316` (Vibrant Orange)
-*   **Base Color**: `#000000` (Deep Black)
-*   **Secondary Accent**: `#1b4d3e` (Forest Green - used in Hero script)
+## 🎨 Design System
+*   **Brand Primary**: `#facc15` (Vibrant Sun Yellow)
+*   **Brand Accent**: `#f97316` (Neon Orange)
+*   **Status Green**: `#10b981` (Fresh Emerald for rewards/success)
+*   **Backgrounds**: Clean, layered white with subtle elevations (`#f8fafc`).
 
 ---
 
-Developed with ❤️ by **Antigravity**
+

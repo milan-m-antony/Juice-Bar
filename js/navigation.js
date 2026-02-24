@@ -2,7 +2,7 @@ import { state, setState } from './state.js';
 import { dom } from './ui.js';
 
 export function initNavigation() {
-    window.addEventListener('scroll', () => {
+    const handleScroll = () => {
         const currentScrollY = window.scrollY;
 
         // Header Hide/Show logic
@@ -12,6 +12,8 @@ export function initNavigation() {
             } else {
                 dom.header.classList.remove('hidden');
             }
+        } else {
+            dom.header.classList.remove('hidden');
         }
         setState({ lastScrollY: currentScrollY });
 
@@ -32,5 +34,29 @@ export function initNavigation() {
                 });
             }
         });
+    };
+
+    const navItems = [...dom.navItems, ...dom.bottomNavItems];
+    navItems.forEach(link => {
+        link.addEventListener('click', (e) => {
+            if (document.startViewTransition) {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+
+                document.startViewTransition(() => {
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+        });
     });
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll);
+    handleScroll(); // Initial check
 }

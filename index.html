@@ -8,7 +8,7 @@
     <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🍹%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="style.css">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="js/lucide.min.js"></script>
 </head>
 
 <body>
@@ -25,11 +25,13 @@
                 <a href="#offers" class="nav-item">Offers</a>
                 <a href="#profile" class="nav-item">Profile</a>
             </nav>
-            <div class="cart-icon-wrapper" id="cartToggle">
-                <div class="cart-btn-circle">
-                    <i data-lucide="shopping-cart"></i>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <div class="cart-icon-wrapper" id="cartToggle">
+                    <div class="cart-btn-circle">
+                        <i data-lucide="shopping-cart"></i>
+                    </div>
+                    <span id="cartCount">0</span>
                 </div>
-                <span id="cartCount">0</span>
             </div>
         </div>
     </header>
@@ -199,33 +201,49 @@
             <button id="closeCart" style="background:none; border:none; cursor:pointer;"><i
                     data-lucide="x"></i></button>
         </div>
+        <div id="rewardProgressContainer"
+            style="margin-bottom: 1rem; background: #f8fafc; padding: 0.8rem; border-radius: 12px; border: 1px solid #eee;">
+            <div
+                style="display: flex; justify-content: space-between; font-size: 0.7rem; font-weight: 800; color: #666; margin-bottom: 6px;">
+                <span id="rewardProgressLabel">Add ₹500 for a FREE Detox Shot!</span>
+                <span id="rewardProgressPercent">0%</span>
+            </div>
+            <div style="width: 100%; height: 6px; background: #e2e8f0; border-radius: 10px; overflow: hidden;">
+                <div id="rewardProgressBar"
+                    style="width: 0%; height: 100%; background: #10b981; transition: width 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+                </div>
+            </div>
+        </div>
         <div id="cartItems"></div>
 
-        <div class="promo-box">
+        <div class="promo-box" style="padding: 0.6rem; margin-top: 0.6rem;">
             <input type="text" id="promoCode" placeholder="Enter promo code"
-                style="width:100%; padding:12px; border-radius:8px; border:1px solid #ddd; margin-bottom:10px; font-weight:700;">
+                style="width:100%; padding:10px; border-radius:8px; border:1px solid #ddd; margin-bottom:8px; font-weight:700; font-size: 0.8rem;">
             <button id="applyPromo"
-                style="width:100%; background:#000; color:var(--primary); border:none; padding:12px; border-radius:8px; font-weight:800; cursor:pointer;">APPLY</button>
-            <p id="promoStatus" style="font-size:0.75rem; margin-top:5px; text-align:center;"></p>
+                style="width:100%; background:#000; color:var(--primary); border:none; padding:10px; border-radius:8px; font-weight:800; cursor:pointer; font-size: 0.8rem;">APPLY</button>
+            <p id="promoStatus" style="font-size:0.7rem; margin-top:4px; text-align:center;"></p>
 
-            <div id="availableCoupons" style="margin-top: 1rem;">
+            <div id="availableCoupons" style="margin-top: 0.6rem;">
                 <p
-                    style="font-size: 0.75rem; font-weight: 800; color: #666; margin-bottom: 0.5rem; text-transform: uppercase;">
+                    style="font-size: 0.65rem; font-weight: 800; color: #666; margin-bottom: 0.4rem; text-transform: uppercase;">
                     Available Coupons</p>
-                <div id="couponsList" style="display: flex; flex-wrap: wrap; gap: 8px;"></div>
+                <div id="couponsList" style="display: flex; flex-wrap: wrap; gap: 6px;"></div>
             </div>
         </div>
 
-        <div style="margin-top:1.5rem; padding-top:1.5rem; border-top:1px dashed #ccc;">
-            <div style="display:flex; justify-content:space-between; margin-bottom:8px;"><span>Cart Subtotal</span><span
-                    id="subtotalAmount">₹0</span></div>
+        <div style="margin-top:1rem; padding-top:1rem; border-top:1px dashed #ccc;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:5px; font-size:0.9rem;"><span>Cart
+                    Subtotal</span><span id="subtotalAmount">₹0</span></div>
             <div
-                style="display:flex; justify-content:space-between; margin-bottom:15px; color:#ef4444; font-weight:600;">
-                <span>Coupons</span><span id="discountAmount">₹0</span>
+                style="display:flex; justify-content:space-between; margin-bottom:10px; color:#ef4444; font-weight:600; font-size:0.9rem;">
+                <span>Coupons</span><span id="discountAmount">-₹0</span>
             </div>
-            <div style="display:flex; justify-content:space-between; font-weight:900; font-size:1.8rem;"><span>Grand
+            <div
+                style="display:flex; justify-content:space-between; font-weight:900; font-size:1.4rem; border-top:1px solid #eee; padding-top:10px;">
+                <span>Grand
                     Total</span><span id="totalAmount">₹0</span></div>
-            <button class="add-btn cart-checkout-btn" id="checkoutBtn">GENERATE BILL</button>
+            <button class="add-btn cart-checkout-btn" id="checkoutBtn"
+                style="height: 55px; font-size: 1.1rem; margin-top: 1rem;">GENERATE BILL</button>
         </div>
     </div>
 
