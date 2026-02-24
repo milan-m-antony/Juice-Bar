@@ -48,3 +48,9 @@ function init() {
 
 // Start the app
 document.addEventListener('DOMContentLoaded', init);
+
+window.addEventListener("resize", () => {
+    location.reload();
+});
+
+
