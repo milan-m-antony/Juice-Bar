@@ -89,19 +89,23 @@
                         <div class="offer-badge">HOT DEAL</div>
                         <h3>Summer Refresh</h3>
                         <p>Enjoy 20% OFF on all fresh citrus juices!</p>
-                        <div
-                            style="font-weight:900; font-size:1.4rem; margin-bottom:1.5rem; color:#1b4d3e; font-family:'Fredoka', sans-serif;">
-                            CODE: SUMMER20</div>
-                        <button class="hero-btn btn-green" style="width:100%;">USE COUPON</button>
+                        <div class="coupon-voucher" onclick="copyCoupon('SUMMER20')">
+                            <span class="voucher-label">CODE:</span>
+                            <span class="voucher-code">SUMMER20</span>
+                        </div>
+                        <button class="hero-btn btn-green" style="width:100%;" onclick="copyCoupon('SUMMER20')">USE
+                            COUPON</button>
                     </div>
                     <div class="offer-card offer-orange">
                         <div class="offer-badge">BUNDLE</div>
                         <h3>The Family Pack</h3>
                         <p>Mix any 4 jumbo juices at flat ₹250 price.</p>
-                        <div
-                            style="font-weight:900; font-size:1.4rem; margin-bottom:1.5rem; color:#f97316; font-family:'Fredoka', sans-serif;">
-                            AUTOMATIC DISCOUNT</div>
-                        <button class="hero-btn btn-orange" style="width:100%;">GRAB NOW</button>
+                        <div class="coupon-voucher" onclick="copyCoupon('COMBO250')">
+                            <span class="voucher-label">DEAL:</span>
+                            <span class="voucher-code">COMBO250</span>
+                        </div>
+                        <button class="hero-btn btn-orange" style="width:100%;" onclick="copyCoupon('COMBO250')">GRAB
+                            NOW</button>
                     </div>
                 </div>
             </div>
@@ -113,17 +117,54 @@
                 <div class="section-title">
                     <h2><span class="title-script">User</span> <span class="title-bold">Profile</span></h2>
                 </div>
-                <div class="profile-card">
-                    <div class="profile-avatar">
-                        <i data-lucide="user" style="width:50px; height:50px; color:black;"></i>
+                <div class="profile-card"
+                    style="max-width: 800px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; text-align: left; padding: 2.5rem; align-items: start;">
+                    <div
+                        style="display: flex; flex-direction: column; align-items: center; text-align: center; border-right: 1px solid #eee; padding-right: 2rem;">
+                        <div class="profile-avatar"
+                            style="margin-bottom: 1rem; position: relative; background: #f8fafc; border: 2px dashed #ddd;">
+                            <i data-lucide="user-circle" style="width: 60%; height: 60%; color: #cbd5e1;"></i>
+                        </div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 0.2rem;">Fusion Fan</h3>
+                        <p style="color: #666; font-size: 0.9rem; margin-bottom: 1.5rem;">Join the club for exclusive
+                            rewards ✨</p>
+                        <div style="width: 100%; display: grid; grid-template-columns: 1fr; gap: 10px;">
+                            <button class="add-btn" style="height: 50px;">SIGN IN TO YOUR ACCOUNT</button>
+                            <p style="font-size: 0.75rem; color: #999; margin-top: 5px;">New here? <a href="#"
+                                    style="color: #000; font-weight: 800;">Create an account</a></p>
+                        </div>
                     </div>
-                    <h3>Hello, Fusion Fan!</h3>
-                    <p style="color:var(--gray-600); margin-bottom:2rem;">Log in to track your juice journey and earn
-                        reward points with every sip.</p>
-                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem;">
-                        <button class="add-btn">SIGN IN</button>
-                        <button class="add-btn"
-                            style="background:transparent; border:2px solid black; color:black;">CREATE ACCOUNT</button>
+
+                    <div
+                        style="display: flex; flex-direction: column; gap: 1.5rem; opacity: 0.6; filter: grayscale(0.5);">
+                        <div>
+                            <h4 style="font-size: 0.8rem; letter-spacing: 1px; color: #999; margin-bottom: 0.8rem;">
+                                MEMBERSHIP BENEFITS</h4>
+                            <div style="display: flex; gap: 1rem;">
+                                <div
+                                    style="background: #f8fafc; padding: 1rem; border-radius: 15px; flex: 1; border: 1px solid #eee;">
+                                    <div style="font-size: 1.2rem; font-weight: 900;">0</div>
+                                    <div style="font-size: 0.7rem; color: #666; font-weight: 800;">FRUIT POINTS</div>
+                                </div>
+                                <div
+                                    style="background: #f8fafc; padding: 1rem; border-radius: 15px; flex: 1; border: 1px solid #eee;">
+                                    <div style="font-size: 1.2rem; font-weight: 900;">0</div>
+                                    <div style="font-size: 0.7rem; color: #666; font-weight: 800;">FREE JUICES</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 style="font-size: 0.8rem; letter-spacing: 1px; color: #999; margin-bottom: 0.8rem;">YOUR
+                                RECENT ACTIVITY</h4>
+                            <div
+                                style="text-align: center; border: 2px dashed #eee; padding: 2rem; border-radius: 15px;">
+                                <i data-lucide="shopping-bag"
+                                    style="width:30px; height:30px; color:#ddd; margin-bottom:10px;"></i>
+                                <p style="font-size: 0.8rem; color: #999; font-weight: 600;">No recent orders found.
+                                    Start your juice journey now!</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -158,10 +199,9 @@
             <button id="closeCart" style="background:none; border:none; cursor:pointer;"><i
                     data-lucide="x"></i></button>
         </div>
-        <div id="cartItems" style="flex-grow:1; overflow-y:auto;"></div>
+        <div id="cartItems"></div>
 
-        <div class="promo-box"
-            style="padding:1rem; background:#f9f9f9; border-radius:15px; margin-top:1rem; border:1px solid #ddd;">
+        <div class="promo-box">
             <input type="text" id="promoCode" placeholder="Enter promo code"
                 style="width:100%; padding:12px; border-radius:8px; border:1px solid #ddd; margin-bottom:10px; font-weight:700;">
             <button id="applyPromo"
@@ -189,6 +229,43 @@
         </div>
     </div>
 
+    <!-- Product Detail Modal (Quick View) -->
+    <div class="modal-overlay" id="itemDetailModal">
+        <div class="item-modal-content">
+            <button id="closeItemModal" class="close-item-modal"><i data-lucide="x"></i></button>
+            <div class="item-modal-hero">
+                <img id="modalItemImage" src="" alt="">
+            </div>
+            <div class="item-modal-body">
+                <div class="item-modal-header">
+                    <div>
+                        <h2 id="modalItemName">Juice Name</h2>
+                        <div id="modalItemTags" class="item-tags"></div>
+                    </div>
+                    <div id="modalItemPrice" class="price-tag">₹0</div>
+                </div>
+                <p id="modalItemDesc" class="item-modal-desc" style="font-size:0.9rem; color:#666; margin-bottom:1rem;">
+                    Description</p>
+
+                <div class="detail-section" style="margin-bottom:1rem;">
+                    <h4 style="font-size:0.8rem; letter-spacing:1px; margin-bottom:0.5rem;"><i data-lucide="leaf"
+                            style="width:14px; height:14px; vertical-align:middle;"></i> INGREDIENTS</h4>
+                    <div id="modalItemIngredients" class="ingredients-list"
+                        style="display:flex; flex-wrap:wrap; gap:5px;"></div>
+                </div>
+
+                <div class="detail-section">
+                    <h4 style="font-size:0.8rem; letter-spacing:1px; margin-bottom:0.5rem;"><i data-lucide="sparkles"
+                            style="width:14px; height:14px; vertical-align:middle;"></i> BENEFITS</h4>
+                    <p id="modalItemBenefits" style="font-size: 0.9rem; color: #555; line-height: 1.5;"></p>
+                </div>
+
+                <button id="modalAddToCart" class="add-btn"
+                    style="width: 100%; margin-top: 1.5rem; height: 55px; border-radius: 15px;">ADD TO CART</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Final Bill Modal -->
     <div class="modal-overlay" id="successModal">
         <div class="modal invoice-modal">
@@ -213,7 +290,7 @@
         <span id="toastMessage">Item added to cart!</span>
     </div>
 
-    <script src="app.js"></script>
+    <script type="module" src="app.js"></script>
     <script>lucide.createIcons();</script>
 </body>
 

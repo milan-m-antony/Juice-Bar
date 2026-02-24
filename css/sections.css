@@ -1,0 +1,187 @@
+/* --- Offers --- */
+.offers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.offer-card {
+    background: var(--white);
+    color: var(--black);
+    padding: 3.5rem 2.5rem;
+    border-radius: var(--radius-xl);
+    position: relative;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+}
+
+.offer-card:hover {
+    transform: translateY(-10px);
+}
+
+.offer-green {
+    background: #eefdf4;
+    border: 2px solid #1b4d3e;
+}
+
+.offer-orange {
+    background: #fff7ed;
+    border: 2px solid #f97316;
+}
+
+.offer-card h3 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.offer-green h3 {
+    color: #1b4d3e;
+}
+
+.offer-orange h3 {
+    color: #f97316;
+}
+
+.offer-card p {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    color: var(--gray-600);
+}
+
+.offer-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #1b4d3e;
+    color: #fff;
+    padding: 0.8rem 2rem;
+    font-weight: 800;
+    font-size: 0.8rem;
+    border-bottom-left-radius: 20px;
+    font-family: 'Fredoka', sans-serif;
+    z-index: 1;
+}
+
+.offer-orange .offer-badge {
+    background: #f97316;
+}
+
+.coupon-voucher {
+    background: rgba(255, 255, 255, 0.5);
+    border: 2px dashed currentColor;
+    padding: 1.2rem;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+    position: relative;
+    cursor: copy;
+    transition: all 0.3s ease;
+}
+
+.coupon-voucher:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.02);
+}
+
+/* Punched hole effect */
+.coupon-voucher::before,
+.coupon-voucher::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    box-shadow: inset 0 0 0 2px currentColor;
+}
+
+.coupon-voucher::before {
+    left: -14px;
+    background: inherit;
+    /* This will be overridden by parent card background via theme classes */
+}
+
+.coupon-voucher::after {
+    right: -14px;
+    background: inherit;
+}
+
+/* Theme specific backgrounds for the holes to match the parent card */
+.offer-green .coupon-voucher {
+    color: #1b4d3e;
+}
+
+/* Correct approach: the holes should look like cutouts. */
+.offer-green .coupon-voucher::before {
+    left: -14px;
+    background: #eefdf4;
+    border-right: 2px solid #1b4d3e;
+}
+
+.offer-green .coupon-voucher::after {
+    right: -14px;
+    background: #eefdf4;
+    border-left: 2px solid #1b4d3e;
+}
+
+.offer-orange .coupon-voucher {
+    color: #f97316;
+}
+
+.offer-orange .coupon-voucher::before {
+    left: -14px;
+    background: #fff7ed;
+    border-right: 2px solid #f97316;
+}
+
+.offer-orange .coupon-voucher::after {
+    right: -14px;
+    background: #fff7ed;
+    border-left: 2px solid #f97316;
+}
+
+.voucher-code {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.voucher-label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+/* --- Profile --- */
+.profile-card {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 4rem;
+    border-radius: var(--radius-xl);
+    border: 3px solid var(--black);
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    background: var(--primary);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+}

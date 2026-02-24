@@ -1,0 +1,289 @@
+@media (max-width: 768px) {
+    header {
+        top: 0;
+        width: 100%;
+        border-radius: 0;
+        border: none;
+        border-bottom: 2px solid var(--primary);
+        padding: 0 1rem;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .logo i {
+        display: none;
+    }
+
+    .logo span {
+        display: block !important;
+        font-size: 1.1rem;
+    }
+
+    .search-container {
+        margin: 1rem 0;
+        width: 100%;
+    }
+
+    .menu-action-bar {
+        gap: 0.8rem;
+        margin-bottom: 1.5rem;
+        justify-content: space-between;
+    }
+
+    .search-box {
+        height: 52px;
+        flex: 1;
+    }
+
+    .menu-cart-wrapper {
+        display: block;
+    }
+
+    header.hidden {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .desktop-nav {
+        display: none;
+    }
+
+    .bottom-nav {
+        display: flex;
+    }
+
+    .hero {
+        padding: 7rem 1rem 3rem;
+    }
+
+    .hero h1 .fresh-text {
+        font-size: clamp(2.5rem, 10vw, 3.5rem);
+    }
+
+    .hero h1 .smoothies-text {
+        font-size: clamp(3rem, 12vw, 4rem);
+    }
+
+    .hero-btn {
+        padding: 1rem 1.8rem;
+        font-size: 1rem;
+        width: 100%;
+    }
+
+    .hero-btns {
+        flex-direction: column;
+        width: 100%;
+        max-width: 280px;
+        gap: 1rem;
+    }
+
+    .hero h1 .amp-line {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+
+    .container {
+        padding: 3rem 1rem;
+    }
+
+    .section-title h2 {
+        font-size: 1.8rem;
+    }
+
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .juice-card {
+        padding: 0.8rem;
+    }
+
+    .juice-card .price-tag {
+        font-size: 1.1rem !important;
+    }
+
+    .item-tags .tag:nth-child(n+2) {
+        display: none;
+    }
+
+    .juice-img-container {
+        height: 170px;
+    }
+
+    .juice-card h3 {
+        font-size: 0.9rem;
+    }
+
+    .add-btn {
+        width: auto;
+        margin-top: 0;
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        border-radius: 10px;
+    }
+
+    .profile-card {
+        padding: 2rem 1rem;
+    }
+
+    .offer-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .offer-card h3 {
+        font-size: 1.8rem;
+    }
+
+    .invoice-modal {
+        padding: 1.5rem;
+        border-radius: 20px;
+    }
+
+    .total-row {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .juice-card {
+        padding: 0.6rem;
+    }
+
+    .juice-card .price-tag {
+        font-size: 0.95rem !important;
+    }
+
+    .item-tags .tag {
+        font-size: 0.5rem;
+        padding: 2px 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 80px;
+    }
+
+    .juice-img-container {
+        height: 130px;
+        border-radius: 10px;
+    }
+
+    .juice-card h3 {
+        font-size: 0.8rem;
+        margin-bottom: 2px;
+    }
+
+    .juice-card p {
+        font-size: 0.65rem;
+        margin-bottom: 5px;
+    }
+
+    .add-btn {
+        padding: 0.35rem 0.6rem;
+        font-size: 0.65rem;
+        border-radius: 6px;
+        letter-spacing: 0;
+    }
+
+    .hero h1 .fresh-text {
+        font-size: 2.1rem;
+    }
+
+    .hero h1 .smoothies-text {
+        font-size: 2.6rem;
+    }
+
+    .hero h1 .amp-line {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+    }
+
+    .cart-drawer {
+        width: 100% !important;
+        padding: 1rem !important;
+        border-left: none;
+    }
+
+    .cart-drawer h3 {
+        font-size: 1.2rem;
+    }
+
+    .promo-box {
+        padding: 0.6rem !important;
+        margin-top: 0.5rem !important;
+    }
+
+    .promo-box input,
+    .promo-box button {
+        height: 38px !important;
+        font-size: 0.8rem !important;
+    }
+
+    .cart-checkout-btn {
+        width: 90% !important;
+        height: 50px !important;
+        font-size: 1rem !important;
+        margin: 0.8rem auto 0 !important;
+        display: block !important;
+    }
+
+    .close-modal-btn {
+        width: 90% !important;
+        margin: 1.5rem auto 0 !important;
+        display: block !important;
+    }
+
+    .logo span {
+        display: block !important;
+        font-size: 1rem;
+    }
+
+    .search-container {
+        margin: 0.5rem 0;
+        width: 100%;
+    }
+
+    .search-box {
+        height: 48px;
+        padding: 0 12px;
+    }
+
+    #menuSearch {
+        font-size: 0.9rem;
+    }
+
+    .menu-action-bar {
+        gap: 10px;
+    }
+
+    .offer-card h3 {
+        font-size: 1.4rem;
+    }
+
+    .card-footer {
+        padding-top: 0.5rem !important;
+    }
+
+    .item-toast {
+        width: 85vw;
+        font-size: 0.85rem;
+        padding: 0.8rem 1.5rem;
+        border-radius: 20px;
+        gap: 10px;
+    }
+}
